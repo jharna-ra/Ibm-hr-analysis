@@ -1,0 +1,21 @@
+create database google;
+use google;
+select * from hr_employee;
+desc hr_employee;
+ALTER TABLE hr_employee
+CHANGE `ï»¿Age` Age INT;
+select age from hr_employee order by age desc;
+alter table hr_employee modify EmployeeNumber int First;
+select * from hr_employee;
+select Age from hr_employee where age is null;
+select * from hr_employee where YearsWithCurrManager is null;
+select * from hr_employee where MaritalStatus is null;
+select Over18 from hr_employee where Over18<>"Yes";
+set sql_safe_updates=0;
+update hr_employee set Over18 ="Over 18" where Over18="Yes";
+update hr_employee set Over18 ="Not Yet" where Over18="No";
+update hr_employee set Attrition ="Left the company" where Attrition="Yes";
+update hr_employee set Attrition ="Still Working" where Attrition="No";
+select * from hr_employee;
+select * from hr_employee where Over18="No";
+select  employeeNumber,Age,Attrition,DailyRate from hr_employee group by employeeNumber,Age,Attrition,DailyRate having count(*)>1;
